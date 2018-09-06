@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/estilo.css">
+  <title>Ex07 - Alison Moura e Camila Oliveira</title>
+</head>
+<body>
+  <nav>
+    <h1>Multimídia</h1>
+    <audio controls>
+      <source src="horse.mp3" type="audio/mp3">
+      Ops, talvez você esteja utilizando o Internet Explorer, tente o Google Chrome ;D.
+    </audio>
+  </nav>
+  <main>
+    
+    <video controls>
+      <source src="trailer.mp4" type="video/mp4">
+      Ops, talvez você esteja utilizando o Internet Explorer, tente o Google Chrome ;D.
+    </video>
+
+    <canvas id="myCanvas"></canvas>
+
+  </main>
+  <script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    ctx.save(); 
+
+    ctx.fillStyle = 'green';
+    ctx.fillRect(30, 10, 20, 100);
+
+    ctx.restore();
+    ctx.fillStyle = 'red';
+    ctx.fillRect(60, 20, 20, 90);
+
+    ctx.restore();
+    ctx.fillStyle = 'yellow';
+    ctx.fillRect(90, 10, 20, 100);
+
+    ctx.restore();
+    ctx.fillStyle = 'purple';
+    ctx.fillRect(120, 10, 20, 100);
+
+    ctx.restore();
+    ctx.moveTo(10, 10);
+    ctx.lineTo(10, 130);
+
+    ctx.restore();
+    ctx.moveTo(1, 120);
+    ctx.lineTo(250, 120);
+    
+    ctx.strokeStyle="#000000";
+    ctx.lineWidth=2;
+    ctx.stroke()
+    
+  </script>
+</body>
+</html>
