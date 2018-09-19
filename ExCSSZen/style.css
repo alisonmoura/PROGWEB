@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,300,400');
+
+body { 
+	margin: 0;
+	padding: 0;
+	font-family: 'Raleway', sans-serif;
+}
+
+p { 
+}
+
+h1,h2,h3 { 
+	margin: 0;
+}
+
+a:link { 
+}
+a:visited { 
+}
+a:hover, a:focus, a:active { 
+}
+
+abbr {
+}
+
+/* specific divs */
+.page-wrapper { 
+}
+
+.intro { 
+	background-image: linear-gradient(to right, rgb(119, 34, 255), blue);
+	padding: 20px 70px;
+	color: white;
+}
+
+header h1 { 
+	font-size: 80pt;
+	font-weight: 200;
+}
+header h2 { 
+	font-size: 30pt;
+	font-weight: 300;
+	margin-top: 20px;
+}
+header {
+	display: inline-block;
+	width: 50%;
+	text-align: right;
+	margin-right: 50px;
+	margin-top: 100px;
+}
+
+.summary {
+	display: inline-block;
+	width: 40%;
+	font-size: 20pt;
+	vertical-align: top;
+	font-weight: 200;
+	text-align: justify;
+	margin-top: 700px;
+}
+.summary p {
+}
+
+.preamble {
+	margin-top: 200px;
+	font-size: 20pt;
+	font-weight: 200;
+	width: 50%;
+	text-align: justify;
+	margin-bottom: 200px;
+}
+.preamble h3{
+	font-weight: 400;
+}
+
+.supporting {	
+}
+
+footer { 
+}
+footer a:link, footer a:visited { 
+}
+
+.sidebar {
+}
+.sidebar .wrapper { 
+}
+.sidebar h3.select { 
+}
+.sidebar h3.archives { 
+}
+.sidebar h3.resources { 
+}
+
+.sidebar ul {
+}
+.sidebar li {
+}
+.sidebar li a:link {
+}
+.sidebar li a:visited {
+}
+
+.extra1 {
+}
