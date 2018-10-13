@@ -25,7 +25,7 @@ abstract class AbstractFactory {
     public function __construct() {
 
         try {
-            $this->db = new PDO("sqlite:model/DB_Contato_Copy.sqlite");
+            $this->db = new PDO("sqlite:model/DB_Convertion.sqlite");
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $exception) {
             echo $exception->getMessage();
