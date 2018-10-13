@@ -10,12 +10,12 @@
  */
 
 /**
- * Classe Convertion
+ * Classe Historic
  * @author Alison I. O. Moura
  * @version 1.0
  *
  */
-class Convertion {
+class Historic {
 
     private  $id;
     private $valueFrom;
@@ -24,7 +24,7 @@ class Convertion {
     private $unityTo;
 
     /**
-     * Construtor de Convertion. Nesse contrutor foi utilizado o type hint.
+     * Construtor de Historic. Nesse contrutor foi utilizado o type hint.
      * @param string $id (opcional)
      * @param float $valueFrom
      * @param float $valueTo
@@ -40,7 +40,7 @@ class Convertion {
     }
 	
 	/**
-     * Retorna o id da convertion.
+     * Retorna o id da Historic.
      * @return id - string
      */
     public function getId():string {
@@ -48,7 +48,7 @@ class Convertion {
     }
     
     /**
-     * Retorna o valor de origem da convertion.
+     * Retorna o valor de origem da Historic.
      * @return valueFrom - float
      */
     public function getValueFrom():float {
@@ -56,7 +56,7 @@ class Convertion {
     }
 
     /**
-     * Retorna o valor de destino da convertion.
+     * Retorna o valor de destino da Historic.
      * @return valueTo - float
      */
     public function getValueTo():float {
@@ -64,7 +64,7 @@ class Convertion {
     }
     
     /**
-     * Retorna a unidade de medida de origem da convertion.
+     * Retorna a unidade de medida de origem da Historic.
      * @return unityFrom - string
      */
     public function getUnityFrom():string {
@@ -72,7 +72,7 @@ class Convertion {
     }
 
     /**
-     * Retorna a unidade de medida de destino da convertion.
+     * Retorna a unidade de medida de destino da Historic.
      * @return unityTo - string
      */
     public function getUnityTo():string {
