@@ -10,6 +10,7 @@ class Controller {
 
         switch ($page) {
             case 'history':
+                $this->loadHistory();
                 break;
             default:
                 $this->loadHome();
@@ -20,6 +21,10 @@ class Controller {
 
     private function loadHome() {
         require 'view/home.php';
+    }
+
+    private function loadHistory() {
+        require 'view/history.php';
     }
 
 }
