@@ -26,7 +26,7 @@ class HistoricFactory extends AbstractFactory {
     
     try {
       
-      $sql = "INSERT INTO historic (valueFrom, valueTo, unityFrom , unityTo) VALUES ('" 
+      $sql = "INSERT INTO historic (value_from, value_to, unity_from , unity_to) VALUES ('" 
       . $Historic->getValueFrom() . "', '" 
       . $Historic->getValueTo() . "', '" 
       . $Historic->getUnityFrom() . "', '" 
@@ -59,10 +59,10 @@ class HistoricFactory extends AbstractFactory {
     try {
       
       $sql = "UPDATE historic SET " 
-      . "valueFrom = '" . $Historic->getValueFrom() . "', " 
-      . "valueTo = '" . $Historic->getValueTo() . "', " 
-      . "unityFrom = '" . $Historic->getUnitFrom() . "', " 
-      . "unityTo = '" . $Historic->getUnitTo() . "', " 
+      . "value_from = '" . $Historic->getValueFrom() . "', " 
+      . "value_to = '" . $Historic->getValueTo() . "', " 
+      . "unity_from = '" . $Historic->getUnitFrom() . "', " 
+      . "unity_to = '" . $Historic->getUnitTo() . "', " 
       . "WHERE id = '" . $Historic->getId() . "'";
       
       if($this->db->exec($sql)) {
