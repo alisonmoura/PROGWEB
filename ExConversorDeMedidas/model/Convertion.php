@@ -29,7 +29,7 @@ class Convertion {
      * @param string $unityTo
      * @param float $convertionValue
      */
-    public function __construct(string $id="", float $unityFrom, string $unityTo, $convertionValue) {
+    public function __construct(string $id="", string $unityFrom, string $unityTo, $convertionValue) {
         $this->id = $id;
         $this->unityFrom = $unityFrom;
         $this->unityTo = $unityTo;

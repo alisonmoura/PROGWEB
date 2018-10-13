@@ -1,6 +1,12 @@
 <?php
 
+require_once("model/ConvertionManager.php");
+
 class Controller {
+
+    public function __construct() {
+        $this->convertionManager = new ConvertionManager();
+    }
 
     public function init () {
 
@@ -20,8 +26,20 @@ class Controller {
     }
 
     private function loadHome() {
+        unset($message);
+
+        try {
+            $convertions = $this->convertionManager->findAll();
+        } catch (Exception $e) {
+            $message = (object) ['message' => $e->getMessage(), 'type' => 'error'];
+        }
         if(isset($_GET['action']) && $_GET['action'] == 'calculate') {
-            $result = $_POST['value']*2.54;
+            try {
+                $result = $this->convertionManager->convert($_POST['from'], $_POST['to'], $_POST['value']);
+            } catch (Exception $e) {
+                $result = 0; 
+                $message = (object) ['message' => $e->getMessage(), 'type' => 'error'];
+            }
         } else $result = 0; 
         require 'view/home.php';
     }

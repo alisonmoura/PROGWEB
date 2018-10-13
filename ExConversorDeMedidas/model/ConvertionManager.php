@@ -10,7 +10,26 @@
             $this->factory = new ConvertionFactory();
         }
 
-        public function create(string $unityFrom, string $unityTo, float $convertionValue) {
+        public function convert(string $from, string $to, $value) {
+            if ($from == "") {
+                throw new Exception("Unidade de medida de origem deve ser selecionada!");
+            } elseif ($to == "") {
+                throw new Exception("Unidade de medida de destino deve ser selecionada!");
+            } elseif ($value == "") {
+                throw new Exception("O campo valor deve ser preenchido!");
+            } 
+
+            try {
+                $result = $this->factory->findByUnity($from, $to);
+                $convertion = current($result);
+                if(!isset($convertion)) throw new Exception("Ops! Essa conversão não está registrada ainda");
+                return $value * $convertion->getConvertionValue();
+            } catch (Exception $e) {
+                throw new Exception("Ops! Essa conversão não está registrada ainda");
+            }
+        }
+
+        public function create(string $unityFrom, string $unityTo, $convertionValue) {
             try {
                 
                 if ($unityFrom == "") {

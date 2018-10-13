@@ -124,6 +124,31 @@ class ConvertionFactory extends AbstractFactory {
   }
 
   /**
+  * Método para buscar um Convertion no banco de dados pela unidade de origem e unidade de destino
+  * @param string $unityFrom - unidade de origem
+  * @param string $unityTo - unidade de destino
+  * @return object - Convertion encontrado pela busca ou null caso nenhum Convertion seja encontrado
+  */
+  public function findByUnity(string $unityFrom, string $unityTo): array {
+    $sql = "SELECT * FROM convertion WHERE unity_from = '" . $unityFrom . "' AND unity_to = '" . $unityTo . "'";
+    
+    try {
+      $resultRows = $this->db->query($sql);
+      
+      if (!($resultRows instanceof PDOStatement)) {
+        throw new Exception("Tem erro no seu SQL!<br> '" . $sql . "'");
+      }
+      
+      $resultObject = $this->queryRowsToListOfObjects($resultRows, "Convertion");
+      return $resultObject;
+      
+    } catch (Exception $exc) {
+      echo $exc->getMessage();
+      $resultObject = array();
+    }
+  }
+
+  /**
   * Método para remoção de um Convertion no banco de dados
   * @param object - Convertion a ser salvo
   * @return boolean - True: deu certo False: deu errado
