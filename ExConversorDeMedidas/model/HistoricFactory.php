@@ -84,7 +84,7 @@ class HistoricFactory extends AbstractFactory {
   * @return array - Array de Historics salvo no banco de dados
   */
   public function findAll(): array {
-    $sql = "SELECT * FROM historic";
+    $sql = "SELECT * FROM historic ORDER BY id DESC";
     
     try {
       $resultRows = $this->db->query($sql);

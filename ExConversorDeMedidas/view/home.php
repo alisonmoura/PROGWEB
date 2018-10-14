@@ -12,9 +12,11 @@
 <body>
 
     <?php if(isset($message)) {?>
-        <div class="alert <?= $message->type?>">
-            <p><?= $message->message?></p>
-        </div>
+    <div class="alert <?= $message->type?>">
+        <p>
+            <?= $message->message?>
+        </p>
+    </div>
     <?php }?>
 
     <form action="?page=home&action=calculate" method="post">
@@ -23,7 +25,9 @@
             <select name="from" id="from">
                 <option value="" selected>Selecione a medida</option>
                 <?php foreach ($convertions as $c) { ?>
-                    <option value="<?= $c->getUnityFrom()?>"><?= $c->getUnityFrom()?></option>
+                <option value="<?= $c->getUnityFrom()?>">
+                    <?= $c->getUnityFrom()?>
+                </option>
                 <?php } ?>
             </select>
         </div>
@@ -31,7 +35,9 @@
             <select name="to" id="to">
                 <option value="" selected>Selecione a medida</option>
                 <?php foreach ($convertions as $c) { ?>
-                    <option value="<?= $c->getUnityTo()?>"><?= $c->getUnityTo()?></option>
+                <option value="<?= $c->getUnityTo()?>">
+                    <?= $c->getUnityTo()?>
+                </option>
                 <?php } ?>
             </select>
         </div>
@@ -49,6 +55,15 @@
             </p>
         </div>
     </form>
+
+    <section class="historic">
+        <?php foreach ($historic as $h) { ?>
+        <div>
+            De: <?= $h->getValueFrom()?> <?= $h->getUnityFrom()?>
+            Para: <?= $h->getValueTo()?> <?= $h->getUnityTo()?>
+        </div>
+        <?php } ?>
+    </section>
 
 </body>
 

@@ -2,12 +2,15 @@
     
     require_once("model/Convertion.php");
     require_once("model/ConvertionFactory.php");
+    require_once("model/HistoricManager.php");
+    require_once("exception/BusinessExeption.php");
 
     class ConvertionManager {
 
         public function __construct() {
 
             $this->factory = new ConvertionFactory();
+            $this->historicManager = new HistoricManager();
         }
 
         public function convert(string $from, string $to, $value) {
@@ -22,10 +25,14 @@
             try {
                 $result = $this->factory->findByUnity($from, $to);
                 $convertion = current($result);
-                if(!isset($convertion)) throw new Exception("Ops! Essa conversão não está registrada ainda");
-                return $value * $convertion->getConvertionValue();
-            } catch (Exception $e) {
+                if(!isset($convertion) || !$convertion) throw new BusinessException("");
+                $convertedValue = $value * $convertion->getConvertionValue();
+                $this->historicManager->create($value, $from, $convertedValue, $to);
+                return $convertedValue;
+            } catch (BusinessException $e) {
                 throw new Exception("Ops! Essa conversão não está registrada ainda");
+            } catch (Exception $e) {
+                throw new Exception("Algo de errado aconteceu na conversão :(");
             }
         }
 

@@ -22,8 +22,8 @@
                     throw new Exception("O campo <strong>unidade de destino</strong> deve ser preenchido!");
                 }
     
-                $Historic = new Historic("", $valueFrom, $unityFrom, $valueTo, $unityTo);
-                $sucesso = $this->factory->salvar($Historic);
+                $historic = new Historic("", $valueFrom, $unityFrom, $valueTo, $unityTo);
+                $sucesso = $this->factory->create($historic);
                 $msg = "O histórico de <em>" . $unityFrom . "</em> para <em>" . $unityTo . "</em> foi cadastrado com sucesso!";
 
                 return "Cadastrado com sucesso!";
