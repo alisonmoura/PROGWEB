@@ -19,6 +19,10 @@
     </div>
     <?php }?>
 
+    <form class="back-form" action="?page=convertion">
+        <button>Nova conversão</button>
+    </form>
+
     <form class="convertion-form" action="?page=home&action=calculate" method="post">
         <h1>Conversor de Medidas</h1>
         <select name="from" id="from">

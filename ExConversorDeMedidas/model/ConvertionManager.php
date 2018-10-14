@@ -49,9 +49,8 @@
     
                 $Convertion = new Convertion("", $unityFrom, $unityTo, $convertionValue);
                 $sucesso = $this->factory->create($Convertion);
-                $msg = "O conversão de <em>" . $unityFrom . "</em> para <em>" . $unityTo . "</em> foi cadastrado com sucesso!";
-
-                return "Cadastrado com sucesso!";
+                if($sucesso) return  "O conversão de <strong>" . $unityFrom . "</strong> para <strong>" . $unityTo . "</strong> foi cadastrado com sucesso!";
+                else return "Ocorreu um erro ao salvar a conversão";
 
                 unset($unityFrom);
                 unset($unityTo);

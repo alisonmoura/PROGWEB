@@ -17,8 +17,8 @@ class Controller {
         } else $page = '';
 
         switch ($page) {
-            case 'history':
-                $this->loadHistory();
+            case 'convertion':
+                $this->loadConvertion();
                 break;
             default:
                 $this->loadHome();
@@ -50,8 +50,25 @@ class Controller {
         require 'view/home.php';
     }
 
-    private function loadHistory() {
-        require 'view/history.php';
+    private function loadConvertion() {
+        unset($message);
+        unset($convertions);
+
+        try {
+            $convertions = $this->convertionManager->findAll();
+        } catch (Exception $e) {
+            $message = (object) ['message' => $e->getMessage(), 'type' => 'error'];
+        }
+        if(isset($_GET['action']) && $_GET['action'] == 'create') {
+            try {
+                $result = $this->convertionManager->create($_POST['from'], $_POST['to'], $_POST['value']); // cria nova conversão
+                $convertions = $this->convertionManager->findAll(); // atualiza as conversões
+                $message = (object) ['message' => $result, 'type' => 'success'];
+            } catch (Exception $e) {
+                $message = (object) ['message' => $e->getMessage(), 'type' => 'error'];
+            }
+        }
+        require 'view/convertion.php';
     }
 
 }
