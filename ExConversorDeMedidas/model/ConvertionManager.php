@@ -19,7 +19,7 @@
             } elseif ($to == "") {
                 throw new Exception("Unidade de medida de destino deve ser selecionada!");
             } elseif ($value == "") {
-                throw new Exception("O campo valor deve ser preenchido!");
+                throw new Exception("O campo <strong>valor</strong> deve ser preenchido!");
             } 
 
             try {
@@ -30,7 +30,7 @@
                 $this->historicManager->create($value, $from, $convertedValue, $to);
                 return $convertedValue;
             } catch (BusinessException $e) {
-                throw new Exception("Ops! Essa conversão não está registrada ainda");
+                throw new Exception('Ops! Essa conversão não está registrada ainda! Você pode criar uma nova conversão <a href="?page=convertion">aqui</a>');
             } catch (Exception $e) {
                 throw new Exception("Algo de errado aconteceu na conversão :(");
             }

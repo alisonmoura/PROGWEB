@@ -19,48 +19,43 @@
     </div>
     <?php }?>
 
-    <form action="?page=home&action=calculate" method="post">
+    <form class="convertion-form" action="?page=home&action=calculate" method="post">
         <h1>Conversor de Medidas</h1>
-        <div>
-            <select name="from" id="from">
-                <option value="" selected>Selecione a medida</option>
-                <?php foreach ($convertions as $c) { ?>
-                <option value="<?= $c->getUnityFrom()?>">
-                    <?= $c->getUnityFrom()?>
-                </option>
-                <?php } ?>
-            </select>
-        </div>
-        <div>
-            <select name="to" id="to">
-                <option value="" selected>Selecione a medida</option>
-                <?php foreach ($convertions as $c) { ?>
-                <option value="<?= $c->getUnityTo()?>">
-                    <?= $c->getUnityTo()?>
-                </option>
-                <?php } ?>
-            </select>
-        </div>
-        <div>
-            <input type="number" name="value" id="value" placeholder="Valor">
-        </div>
-        <div>
-            <button>Calcula</button>
-        </div>
-        <div>
-            <p>Resultado:
-                <strong>
-                    <?= $result?>
-                </strong>
-            </p>
-        </div>
+        <select name="from" id="from">
+            <option value="" selected>Selecione a medida</option>
+            <?php foreach ($convertions as $c) { ?>
+            <option value="<?= $c->getUnityFrom()?>">
+                <?= $c->getUnityFrom()?>
+            </option>
+            <?php } ?>
+        </select>
+        <select name="to" id="to">
+            <option value="" selected>Selecione a medida</option>
+            <?php foreach ($convertions as $c) { ?>
+            <option value="<?= $c->getUnityTo()?>">
+                <?= $c->getUnityTo()?>
+            </option>
+            <?php } ?>
+        </select>
+        <input type="number" name="value" id="value" placeholder="Valor">
+        <button>Calcular</button>
+        <p class="result">Resultado:
+            <strong>
+                <?= $result?>
+            </strong>
+        </p>
     </form>
 
     <section class="historic">
+        <h2>Histórico de Conversão</h2>
         <?php foreach ($historic as $h) { ?>
         <div>
-            De: <?= $h->getValueFrom()?> <?= $h->getUnityFrom()?>
-            Para: <?= $h->getValueTo()?> <?= $h->getUnityTo()?>
+            De:
+            <?= $h->getValueFrom()?>
+            <?= $h->getUnityFrom()?>
+            Para:
+            <?= $h->getValueTo()?>
+            <?= $h->getUnityTo()?>
         </div>
         <?php } ?>
     </section>
