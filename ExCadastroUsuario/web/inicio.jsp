@@ -14,5 +14,11 @@
     </head>
     <body>
         <h1>Cadastro Usuário</h1>
+        <form action="novo">
+            <button>Novo Usuário</button>
+        </form>
+        <form action="lista">
+            <button>Listar Usuários</button>
+        </form>
     </body>
 </html>

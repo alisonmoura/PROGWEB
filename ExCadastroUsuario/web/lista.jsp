@@ -14,5 +14,23 @@
     </head>
     <body>
         <h1>Usuários Cadastrados</h1>
+
+        <c:choose>
+            <c:when test="${empty usuarios}">
+                <p>- Não há usuários registrados </p>
+            </c:when>
+            <c:otherwise>
+
+                <c:forEach var="u" items="${usuarios}">
+                    <p> ${u.nome} </p>
+                </c:forEach>
+
+            </c:otherwise>
+        </c:choose>
+        <p>
+            <a href="${pageContext.request.contextPath}/inicio">Retornar ao início</a> 
+            /
+            <a href="${pageContext.request.contextPath}/novo">Cadastrar outro usuário</a>
+        </p>
     </body>
 </html>

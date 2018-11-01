@@ -6,11 +6,13 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Usuario;
 
 /**
  *
@@ -30,18 +32,55 @@ public class UsuarioServletController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String page = "";
-        
-        if(request.getRequestURI().endsWith("/inicio")){
+
+        if (request.getRequestURI().endsWith("/inicio")) {
             page = "/inicio.jsp";
-        } else if(request.getRequestURI().endsWith("/novo")){
+        } else if (request.getRequestURI().endsWith("/novo")) {
             page = "/novo.jsp";
-        } else if(request.getRequestURI().endsWith("/salva")){
-            page = "/salva.jsp";
-        } else if(request.getRequestURI().endsWith("/lista")){
+        } else if (request.getRequestURI().endsWith("/salva")) {
+            salvar(request, response);
+        } else if (request.getRequestURI().endsWith("/lista")) {
             page = "/lista.jsp";
         }
-        
+
         request.getRequestDispatcher(page).forward(request, response);
+    }
+
+    private void salvar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        try {
+            String nome = request.getParameter("nome");
+            String email = request.getParameter("email");
+            String senha = request.getParameter("senha");
+
+            Usuario usuario = new Usuario();
+            usuario.setNome(nome);
+            usuario.setEmail(email);
+            usuario.setSenha(senha);
+
+            List<Usuario> usuarios = (List) request.getSession().getAttribute("usuarios");
+            usuarios.add(usuario);
+            request.getSession().setAttribute("usuarios", usuarios);
+            request.setAttribute("success", true);
+            request.setAttribute("msg", "Usuário salvo com sucesso!");
+            
+        } catch (Exception e) {
+            request.setAttribute("success", false);
+            request.setAttribute("msg", e.getMessage());
+        } finally {
+            request.getRequestDispatcher("mensagem.jsp").forward(request, response);
+        }
+
+    }
+
+    private void listar(HttpServletRequest request) {
+
+        if (request.getSession().getAttribute("usuarios") == null) {
+            request.getSession().setAttribute("usuarios", new ArrayList());
+        }
+
+        List<Usuario> usuarios = (List) request.getSession().getAttribute("usuarios");
+        request.setAttribute("usuarios", usuarios);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
