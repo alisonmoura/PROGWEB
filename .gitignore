@@ -1,3 +1,9 @@
 .DS_Store
 /**/nbproject
 /**/build
+/HelloJavaEE/HelloJavaEE-ejb/dist/
+/HelloJavaEE/HelloJavaEE-war/dist/
+/HelloJavaEE/dist/
+/Ex13/Ex13-ejb/dist/
+/Ex13/Ex13-war/dist/
+/Ex13/dist/
